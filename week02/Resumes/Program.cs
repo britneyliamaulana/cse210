@@ -35,7 +35,7 @@ class Program
         // Test: display the first job title
         Console.WriteLine(myResume._jobs[0]._jobTitle);
 
-        // Display the full resume
+        // full resume display
         myResume.Display();
     }
 }
