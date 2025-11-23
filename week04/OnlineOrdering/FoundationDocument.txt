@@ -1,0 +1,88 @@
+Foundation Design 
+
+Program #1: Abstraction with YouTube Videos
+Purpose
+This program models the behavior of YouTube videos and related entities using abstraction.
+It hides complex implementation details (like video streaming) while exposing essential actions such as play, pause, and like.
+
+Candidate Classes :
+Videoo
+Channel
+User
+Playlist
+
+Responsibilities, Attributes, and Methods
+Video
+
+Attributes: title, description, length, views, likes, url
+Methods: play(), pause(), like(), share()
+
+Channel
+Attributes: name, subscribers, videos[]
+Methods: uploadVideo(), subscribe(), getVideos()
+
+User
+Attributes: username, history[], subscriptions[]
+Methods: watchVideo(), comment(), subscribeChannel()
+
+Playlist
+Attributes: name, videos[]
+Methods: addVideo(), removeVideo(), playAll()
+
+Class Diagram 
+User ---- watches ----> Video
+User ---- subscribes ----> Channel
+Channel ---- contains ----> Video
+Playlist ---- contains ----> Video
+
+Program Flow
+User selects a video.
+Video plays (abstraction hides streaming details).
+User interacts (like, comment, share).
+Channel updates stats automatically
+
+---------------------------------------------------------------------------------------------------------------------
+
+Program #2: Encapsulation with Online Ordering
+
+Purpose
+This program simulates an online ordering system using encapsulation. Sensitive data (like payment details) is protected, and access is controlled through methods.
+
+Candidate Classes:
+Product
+ShoppingCart
+Order
+Customer
+Payment
+
+Responsibilities, Attributes, and Methods>>
+Product
+Attributes: name, price, stock
+Methods: getPrice(), updateStock()
+
+ShoppingCart
+Attributes: items[], total
+Methods: addItem(), removeItem(), checkout()
+
+Order
+Attributes: orderID, products[], totalAmount, status
+Customer
+Attributes: name, email, address
+Methods: placeOrder(), viewOrders()
+
+Payment
+Attributes: paymentMethod, amount
+Methods: processPayment(), refund()
+Methods: calculateTotal(), updateStatus()
+
+Class Diagram
+Customer ---- owns ----> ShoppingCart ---- contains ----> Product
+ShoppingCart ---- creates ----> Order ---- processes ----> Payment
+
+
+Program Flow
+1.Customer adds products to cart.
+2.Cart calculates total.
+3.Customer checks out → creates Order.
+4.Payment processes securely (encapsulation hides sensitive details).
+5.Order status updates.
