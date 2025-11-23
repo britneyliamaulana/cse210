@@ -6,17 +6,22 @@ namespace OnlineOrdering
     // Product class
     class Product
     {
-        public string Name { get; private set; }
-        public decimal Price { get; private set; }
+        private string name;
+        private decimal price;
         private int stock;
 
         public Product(string name, decimal price, int stock)
         {
-            Name = name;
-            Price = price;
+            this.name = name;
+            this.price = price;
             this.stock = stock;
         }
 
+        // Public getters
+        public string Name { get { return name; } }
+        public decimal Price { get { return price; } }
+
+        // Reduce stock safely
         public bool ReduceStock(int quantity)
         {
             if (quantity <= stock)
@@ -26,11 +31,12 @@ namespace OnlineOrdering
             }
             else
             {
-                Console.WriteLine($"Not enough stock for {Name}");
+                Console.WriteLine($"Not enough stock for {name}.");
                 return false;
             }
         }
 
+        // Get current stock
         public int GetStock()
         {
             return stock;
@@ -42,18 +48,21 @@ namespace OnlineOrdering
     {
         private List<Product> cartItems = new List<Product>();
 
+        // Add product to cart
         public void AddProduct(Product product)
         {
             cartItems.Add(product);
             Console.WriteLine($"Added {product.Name} to the cart.");
         }
 
+        // Remove product from cart
         public void RemoveProduct(Product product)
         {
             cartItems.Remove(product);
             Console.WriteLine($"Removed {product.Name} from the cart.");
         }
 
+        // Calculate total price
         public decimal CalculateTotal()
         {
             decimal total = 0;
@@ -64,32 +73,43 @@ namespace OnlineOrdering
             return total;
         }
 
+        // Display cart contents
         public void ShowCart()
         {
             Console.WriteLine("Cart items:");
             foreach (var item in cartItems)
             {
-                Console.WriteLine(item.Name + " - $" + item.Price);
+                Console.WriteLine($"{item.Name} - ${item.Price}");
             }
             Console.WriteLine("Total: $" + CalculateTotal());
+        }
+
+        // Get the list of items (read-only)
+        public List<Product> GetItems()
+        {
+            return new List<Product>(cartItems);
         }
     }
 
     // Order class
     class Order
     {
+        private string customerName;
         private ShoppingCart cart;
-        public string CustomerName { get; private set; }
 
         public Order(string customerName, ShoppingCart cart)
         {
-            CustomerName = customerName;
+            this.customerName = customerName;
             this.cart = cart;
         }
 
+        // Public getter for customer name
+        public string CustomerName { get { return customerName; } }
+
+        // Place the order
         public void PlaceOrder()
         {
-            Console.WriteLine($"Order placed by {CustomerName}.");
+            Console.WriteLine($"Order placed by {customerName}.");
             cart.ShowCart();
             Console.WriteLine("Thank you for your purchase!");
         }
@@ -99,13 +119,16 @@ namespace OnlineOrdering
     {
         static void Main()
         {
+            // Create products
             Product product1 = new Product("Laptop", 1200m, 5);
             Product product2 = new Product("Mouse", 25m, 10);
 
+            // Create shopping cart
             ShoppingCart cart = new ShoppingCart();
             cart.AddProduct(product1);
             cart.AddProduct(product2);
 
+            // Place an order
             Order order = new Order("Alice", cart);
             order.PlaceOrder();
         }
