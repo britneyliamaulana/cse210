@@ -83,7 +83,7 @@ namespace YouTubeSimulation
             playlist.ShowVideos();
 
             video1.Play();
-            video1.AddComment(new Comment("Janice", "Purple cat is not real!"));
+            video1.AddComment(new Comment("Janice", "Purple cat is not rea!"));
             video1.ShowComments();
         }
     }
