@@ -74,16 +74,16 @@ namespace YouTubeSimulation
         static void Main()
         {
             // Sample 
-            Video video1 = new Video { Title = "C# Basics", URL = "https://youtube.com/1", Duration = 300 };
-            Video video2 = new Video { Title = "OOP Concepts", URL = "https://youtube.com/2", Duration = 400 };
+            Video video1 = new Video { Title = "Cats Or Dogs", URL = "https://youtube.com/1", Duration = 300 };
+            Video video2 = new Video { Title = "Cat Videos Compilation", URL = "https://youtube.com/2", Duration = 400 };
 
-            Playlist playlist = new Playlist { Name = "Learning C#" };
+            Playlist playlist = new Playlist { Name = "Cats And Dogs" };
             playlist.AddVideo(video1);
             playlist.AddVideo(video2);
             playlist.ShowVideos();
 
             video1.Play();
-            video1.AddComment(new Comment("Alice", "Great video!"));
+            video1.AddComment(new Comment("Janice", "Purple cat is not real!"));
             video1.ShowComments();
         }
     }
