@@ -1,5 +1,5 @@
 using System;
-
+//i added a statistics tracker that keeps count of how many times the mindful program activities were performed.
 class Program
 {
     static void Main(string[] args)
